@@ -1,0 +1,75 @@
+version: 2.1
+executors:
+  default:
+    working_directory: /home/circleci/holo-native
+    docker:
+      - image: circleci/node:latest
+
+commands:
+  save_workspace:
+    steps:
+      - persist_to_workspace:
+          root: /home/circleci/holo-native
+          paths:
+            - .
+
+  load_workspace:
+    steps:
+      - attach_workspace:
+          at: /home/circleci/holo-native
+
+  save_node_cache:
+    steps:
+      - save_cache:
+          key: nodemodule-v2-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
+  load_node_cache:
+    steps:
+      - restore_cache:
+          keys:
+            - nodemodule-v2-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
+
+jobs:
+  setup:
+    executor: default
+    steps:
+      - checkout
+      - load_node_cache
+      - run: yarn install
+      - save_node_cache
+      - save_workspace
+
+  build:
+    executor: default
+    steps:
+      - load_workspace
+      - run: yarn build
+
+  lint:
+    executor: default
+    steps:
+      - load_workspace
+      - run: yarn lint
+
+  test:
+    executor: default
+    steps:
+      - load_workspace
+      - run: yarn test
+
+workflows:
+  version: 2
+  buid_and_deploy:
+    jobs:
+      - setup
+      - build:
+          requires:
+            - setup
+      - lint:
+          requires:
+            - setup
+      - test:
+          requires:
+            - setup
