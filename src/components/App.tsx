@@ -1,12 +1,9 @@
+import 'react-native-gesture-handler'
 import React from 'react'
-import { Text } from 'react-native'
+import AppContainer from 'src/components/containers/AppContainer'
 
 const App = () => {
-  return (
-    <>
-      <Text>Hello</Text>
-    </>
-  )
+  return <AppContainer />
 }
 
 export default App
