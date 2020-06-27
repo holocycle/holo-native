@@ -4,9 +4,11 @@ import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 import StackContainer from 'src/components/containers/StackContainer'
+import TopTabConatiner from 'src/components/containers/TopTabContainer'
 
 const TabContainer = createBottomTabNavigator({
   Stack: StackContainer,
+  TopTab: TopTabConatiner,
   Page2: Page2,
 })
 
