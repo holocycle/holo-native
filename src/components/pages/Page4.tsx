@@ -9,7 +9,7 @@ type Props = {
 const Page3 = ({ navigation }: Props) => {
   return (
     <View>
-      <Text>Page3</Text>
+      <Text>Page4</Text>
       <Button
         onPress={() => {
           navigation.navigate('Page1')

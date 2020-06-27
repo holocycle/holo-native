@@ -1,21 +1,18 @@
 import Page1 from 'src/components/pages/Page1'
 import Page2 from 'src/components/pages/Page2'
-import Page3 from 'src/components/pages/Page3'
 import { createAppContainer } from 'react-navigation'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createDrawerNavigator } from 'react-navigation-drawer'
+import StackContainer from 'src/components/containers/StackContainer'
 
 const TabContainer = createBottomTabNavigator({
-  Tab1: Page1,
-  Tab2: Page2,
-  Tab3: Page3,
+  Stack: StackContainer,
+  Page2: Page2,
 })
 
 const DrawerConatiner = createDrawerNavigator({
   Main: TabContainer,
-  Tab1: Page1,
-  Tab2: Page2,
-  Tab3: Page3,
+  Page1: Page1,
 })
 
 const AppContainer = DrawerConatiner
