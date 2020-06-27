@@ -1,9 +1,9 @@
 import { createStackNavigator } from 'react-navigation-stack'
+import Page2 from 'src/components/pages/Page2'
 import Page3 from 'src/components/pages/Page3'
-import Page4 from 'src/components/pages/Page4'
 
 const StackContainer = createStackNavigator({
+  Page2: Page2,
   Page3: Page3,
-  Page4: Page4,
 })
 export default StackContainer

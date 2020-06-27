@@ -12,51 +12,15 @@ const Page3 = ({ navigation }: Props) => {
       <Text>Page3</Text>
       <Button
         onPress={() => {
-          navigation.navigate('Page1')
+          navigation.goBack()
         }}
-        title="navigate Page1"
+        title="goBack"
       />
       <Button
         onPress={() => {
-          navigation.navigate('Page2')
+          navigation.popToTop()
         }}
-        title="navigate Page2"
-      />
-      <Button
-        onPress={() => {
-          navigation.navigate('Page3')
-        }}
-        title="navigate Page3"
-      />
-      <Button
-        onPress={() => {
-          navigation.navigate('Page4')
-        }}
-        title="navigate Page4"
-      />
-      <Button
-        onPress={() => {
-          navigation.push('Page1')
-        }}
-        title="push Page1"
-      />
-      <Button
-        onPress={() => {
-          navigation.push('Page2')
-        }}
-        title="push Page2"
-      />
-      <Button
-        onPress={() => {
-          navigation.push('Page3')
-        }}
-        title="push Page3"
-      />
-      <Button
-        onPress={() => {
-          navigation.push('Page4')
-        }}
-        title="push Page4"
+        title="popToTop"
       />
     </View>
   )

@@ -1,22 +1,30 @@
 import Page1 from 'src/components/pages/Page1'
-import Page2 from 'src/components/pages/Page2'
 import { createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 import StackContainer from 'src/components/containers/StackContainer'
 import TopTabConatiner from 'src/components/containers/TopTabContainer'
 
 const TabContainer = createBottomTabNavigator({
-  Stack: StackContainer,
+  StackTab: StackContainer,
   TopTab: TopTabConatiner,
-  Page2: Page2,
 })
 
 const DrawerConatiner = createDrawerNavigator({
   Main: TabContainer,
-  Page1: Page1,
+  DrawerMenu1: Page1,
+  DrawerMenu2: Page1,
 })
 
-const AppContainer = DrawerConatiner
+const AppContainer = createStackNavigator(
+  {
+    Drawer: DrawerConatiner,
+    NoDrawerPage: Page1,
+  },
+  {
+    headerMode: 'none',
+  },
+)
 
 export default createAppContainer(AppContainer)
