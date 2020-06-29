@@ -5,10 +5,12 @@ import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { createDrawerNavigator } from 'react-navigation-drawer'
 import StackContainer from 'src/components/containers/StackContainer'
 import TopTabConatiner from 'src/components/containers/TopTabContainer'
+import ApiPage from 'src/components/pages/ApiPage'
 
 const TabContainer = createBottomTabNavigator({
   StackTab: StackContainer,
   TopTab: TopTabConatiner,
+  ApiTab: ApiPage,
 })
 
 const DrawerConatiner = createDrawerNavigator({
